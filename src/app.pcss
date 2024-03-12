@@ -2,12 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+.custom-btn-shadow {
+  box-shadow: 0px 4px 0px 0px #4D4D4D;
+}
+
 .custom-shadow {
   box-shadow: 0px 4px 0px 0px #4D4D4D;
 }
 
-.custom-shadow:hover {
-  box-shadow: 0px 4px 0px 0px #003A91;
+@media (hover: hover) {
+  .custom-btn-shadow:hover {
+    box-shadow: 0px 4px 0px 0px #0066FF;
+}
+}
+
+
+.custom-div-shadow {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 @layer base {
@@ -81,10 +92,30 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground mx-[117px];
+    @apply bg-background text-foreground lg:mx-[117px];
   }
 
   .button {
-    @apply gap-x-2 text-[#4D4D4D] font-normal px-6 py-0 border-[0.5px] border-[#4D4D4D] rounded-[4px];
+    @apply gap-x-2 text-[#4D4D4D] font-normal px-6 py-0 border-[0.5px] rounded-[4px]; 
+  }
+
+  .ordered-list {
+    @apply relative border-gray-200 border-dotted dark:border-gray-700 border-s-4 mt-12 ml-24 md:ml-44 lg:ml-[346px] pt-8;
+  }
+
+  .blog-list-div {
+    @apply flex relative -left-[4.05rem] md:-left-[5.1rem] w-full items-center;
+  }
+
+  .blog-list-dot {
+    @apply w-4 h-4 aspect-square border-blue-500 rounded-full mt-1.5 mr-4 md:mr-16 bg-white border-[3px];
+  }
+
+  .position-list-div {
+    @apply flex relative -left-[6.5rem] md:-left-[10.3rem] w-full items-center;
+  }
+
+  .position-list-dot {
+    @apply w-7 h-7 aspect-square border-blue-500 rounded-full mt-1.5 mr-4 md:mr-16 bg-white border-[9px] dark:border-gray-900 dark:bg-gray-700
   }
 }

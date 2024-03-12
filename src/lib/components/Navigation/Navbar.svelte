@@ -4,15 +4,15 @@
   import Explore from "$lib/icons/Explore.svelte";
   import Learn from "$lib/icons/Learn.svelte";
   import Post from "$lib/icons/Post.svelte";
-  import Button from "./ui/button/button.svelte";
+  import Button from "../ui/button/button.svelte";
   import { ChevronDown } from "lucide-svelte";
   import * as Avatar from "$lib/components/ui/avatar/index.js";
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
-  import { userProfile } from "./profile";
+  import { userProfile } from "../profile";
 </script>
 
 <nav
-  class="py-5 flex items-center justify-between border-b-[0.5px] border-[#525C69] border-dotted"
+  class="py-5 hidden lg:flex items-center justify-between border-b-[0.5px] border-[#525C69] border-dotted"
 >
   <div class="flex gap-x-1">
     <DuggupLogo />

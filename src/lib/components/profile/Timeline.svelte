@@ -1,67 +1,75 @@
-<ol
-  class="relative border-gray-200 border-dotted dark:border-gray-700 border-s-4 mt-10 ml-[346px]"
->
-  <li class="mb-10 flex">
-    <div class="flex relative -left-[8.3rem]">
-      <time
-        class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500 mr-4"
-      >
-        February 2022
-      </time>
-      <div
-        class="w-10 h-10 border-blue-500 rounded-full mt-1.5 mr-4 bg-white border-8 dark:border-gray-900 dark:bg-gray-700"
-      ></div>
-      <div>
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-          Application UI code in Tailwind CSS
-        </h3>
-        <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
-          Get access to over 20+ pages including a dashboard layout, charts,
-          kanban board, calendar, and pre-order E-commerce & Marketing pages.
-        </p>
-      </div>
-    </div>
-  </li>
-  <li class="mb-10 flex">
-    <div class="flex">
-      <time
-        class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500 mr-4"
-      >
-        February 2022
-      </time>
-      <div
-        class="w-10 h-10 border-blue-500 rounded-full mt-1.5 mr-4 bg-white border-8 dark:border-gray-900 dark:bg-gray-700"
-      ></div>
-      <div>
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-          Application UI code in Tailwind CSS
-        </h3>
-        <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
-          Get access to over 20+ pages including a dashboard layout, charts,
-          kanban board, calendar, and pre-order E-commerce & Marketing pages.
-        </p>
-      </div>
-    </div>
-  </li>
-  <li class="mb-10 flex">
-    <div class="flex">
-      <time
-        class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500 mr-4"
-      >
-        February 2022
-      </time>
-      <div
-        class="w-10 h-10 border-blue-500 rounded-full mt-1.5 mr-4 bg-white border-8 dark:border-gray-900 dark:bg-gray-700"
-      ></div>
-      <div>
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-          Application UI code in Tailwind CSS
-        </h3>
-        <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
-          Get access to over 20+ pages including a dashboard layout, charts,
-          kanban board, calendar, and pre-order E-commerce & Marketing pages.
-        </p>
-      </div>
-    </div>
-  </li>
+<script>
+  import { userProfile } from ".";
+  import { ChevronUp } from "lucide-svelte";
+</script>
+
+<ol class="ordered-list">
+  {#each userProfile.userHistory as history}
+    <li class="mb-14 flex items-center">
+      {#if history.blogs}
+        <div class="blog-list-div">
+          <div class="mr-4 md:whitespace-nowrap">
+            <p class="text-xs font-normal text-[#7A9299]">
+              {history.date}
+            </p>
+          </div>
+          <div class="blog-list-dot"></div>
+          <div class="flex md:flex-row flex-col gap-3">
+            {#each history.blogs as blog}
+              <div
+                class="custom-div-shadow rounded-[13px] max-w-[344px] w-full"
+              >
+                <img
+                  class="rounded-t-[12px]"
+                  src={blog.image}
+                  alt="blog cover"
+                />
+                <h3 class="text-sm font-normal p-6">
+                  {blog.title}
+                </h3>
+              </div>
+            {/each}
+          </div>
+        </div>
+      {:else}
+        <div class="flex flex-col w-full gap-y-4">
+          <div class="relative -left-[0.9rem] w-full">
+            <ChevronUp class="text-[#778FB1]" />
+          </div>
+          <div class="position-list-div">
+            <div class="mr-4">
+              <div
+                class="flex flex-col items-end md:whitespace-nowrap text-end"
+              >
+                <img
+                  class="w-12 h-12"
+                  src={history.companyLogo}
+                  alt="comapany logo"
+                />
+                <p class="text-base font-bold">{history.companyName}</p>
+                <p class="text-xs font-normal text-[#7A9299]">
+                  {history.companyLocation}
+                </p>
+                <p class="text-xs font-normal text-[#7A9299]">Joined</p>
+                <p class="text-xs font-normal text-[#7A9299]">
+                  {history.Joined}
+                </p>
+              </div>
+            </div>
+            <div class="position-list-dot"></div>
+            <div
+              class="custom-div-shadow w-full rounded-[13px] py-4 px-5 flex flex-col gap-4 justfy-center"
+            >
+              <p class="text-base md:text-xl font-bold">{history.position}</p>
+              <p class="text-sm font-normal text-[#7A9299] align-middle">
+                {history.type !== "" && history.location !== ""
+                  ? `${history.type} . ${history.location}`
+                  : `${history.type} ${history.location}`}
+              </p>
+            </div>
+          </div>
+        </div>
+      {/if}
+    </li>
+  {/each}
 </ol>
